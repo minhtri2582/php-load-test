@@ -8,8 +8,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...          
-      - docker build php-load-test:latest .
+      - echo Building the Docker image...                
+      - docker build -t php-load-test:latest .
       - docker tag php-load-test:latest 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
   post_build:
     commands:
