@@ -8,11 +8,11 @@ phases:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - echo Build started on `date`
-      - echo "Building the Docker image Branch name: $CODEBUILD_WEBHOOK_HEAD_REF"               
+      - echo Build started on `date`            
       - docker build -t php-load-test:latest .
       - docker tag php-load-test:latest 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
       - ARTIFACT_NAME="myapp-$CODEBUILD_WEBHOOK_HEAD_REF.zip"
+      - env
       - echo "Artifact name: $ARTIFACT_NAME"
   post_build:
     commands:
