@@ -9,11 +9,14 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...                
+      - echo "Building the Docker image Branch name: $CODEBUILD_WEBHOOK_HEAD_REF"               
       - docker build -t php-load-test:latest .
       - docker tag php-load-test:latest 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
+      - ARTIFACT_NAME="myapp-$CODEBUILD_WEBHOOK_HEAD_REF.zip"
+      - echo "Artifact name: $ARTIFACT_NAME"
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
+      #- aws s3 cp myapp.zip s3://my-bucket/$ARTIFACT_NAME
