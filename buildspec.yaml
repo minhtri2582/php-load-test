@@ -13,7 +13,7 @@ phases:
       - docker tag php-load-test:latest 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
       - ARTIFACT_NAME="myapp-$CODEBUILD_WEBHOOK_HEAD_REF.zip"
       - env
-      - echo "Artifact name: $ARTIFACT_NAME"
+      - echo "Artifact name ${ARTIFACT_NAME}"
   post_build:
     commands:
       - echo Build completed on `date`
