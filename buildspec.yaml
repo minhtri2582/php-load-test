@@ -18,5 +18,5 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
+      #- docker push 069554186194.dkr.ecr.ap-southeast-1.amazonaws.com/mywebsite:latest
       #- aws s3 cp myapp.zip s3://my-bucket/$ARTIFACT_NAME
